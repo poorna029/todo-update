@@ -1,4 +1,4 @@
-li {
+.val {
   background-color: #4c52ab;
   padding: 5px 9px;
   border: none;
@@ -29,26 +29,38 @@ li {
   * {
     margin: 0px;
     box-sizing: border-box;
+    padding: 0px;
   }
   .val {
-    min-width: 200px;
+    min-width: 380px;
     max-width: 500px;
     margin: 0px;
+    margin-left: -10px;
+    margin-bottom: 10px;
+    height: auto;
   }
   .icon1,
   .icon {
     padding: 0px;
     margin: 0px;
   }
+
+  .icon1 {
+    margin-left: -15px;
+  }
+
+  .icon {
+    margin-left: 10px;
+  }
   .val1 {
     padding: 0px;
     margin: 0px;
-  }
-  li {
+    margin-left: -5px;
+    margin-right: -5px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    margin: 0px;
-    padding: 0px;
+    align-items: center;
+    justify-content: baseline;
+    height: 50px;
   }
 }

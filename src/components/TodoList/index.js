@@ -118,7 +118,7 @@ class TodoList extends Component {
               {!isEdit ? "Add Todo" : "Update Todo"}
             </button>
           </form>
-          <ul>
+          <ul className="val2">
             {todos.map((each) => (
               <TodoItem
                 key={each.id}
