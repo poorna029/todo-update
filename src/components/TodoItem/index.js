@@ -4,7 +4,7 @@ import "./index.css";
 
 const TodoItem = (props) => {
   const { details, onDeleteTodoCount, onUpdateTodoCount } = props;
-  const { id, title, count } = details;
+  const { id, newtitle, count } = details;
   const onDeleteTodo = () => {
     onDeleteTodoCount(id);
   };
@@ -14,7 +14,7 @@ const TodoItem = (props) => {
   return (
     <li className="val">
       <p>
-        {title} <span>(Updated {count} Times)</span>
+        {newtitle} <span>(Updated {count} Times)</span>
       </p>
       <div className="val1">
         <FontAwesomeIcon

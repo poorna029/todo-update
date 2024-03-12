@@ -27,10 +27,11 @@ class TodoList extends Component {
           return {
             ...eachItem,
             count:
-              eachItem.newtitle.length !== text.length
+              eachItem.newtitle !== text
                 ? eachItem.count + Number(1)
                 : eachItem.count,
-            title: text,
+            oldtitle: eachItem.newtitle,
+            newtitle: text,
           };
         }
         return eachItem;
@@ -43,7 +44,7 @@ class TodoList extends Component {
 
   onEditTodo = (id) => {
     const { todos } = this.state;
-    const val = todos.filter((e) => e.id === id)[0].title;
+    const val = todos.filter((e) => e.id === id)[0].newtitle;
     this.setState((prevState) => ({
       todos: prevState.todos,
       text: val,
@@ -66,14 +67,11 @@ class TodoList extends Component {
     if (text !== "") {
       const data = {
         id: uuidv4(),
-        title: text,
+        oldtitle: text,
         count: count,
         newtitle: text,
       };
-      this.setState((prev) => {
-        return { todos: [...prev.todos, data] };
-      });
-      this.setState({ text: "" });
+      this.setState((prev) => ({ todos: [...prev.todos, data], text: "" }));
     }
     if (typeof Number(num) === "number") {
       length = Number(num);
@@ -82,17 +80,14 @@ class TodoList extends Component {
         for (let i = 1; i < length; i++) {
           const data = {
             id: uuidv4(),
-            title: text,
+            oldtitle: text,
             count: count,
             newtitle: text,
           };
           arr.push(data);
         }
-        this.setState((prev) => {
-          return { todos: [...prev.todos, ...arr] };
-        });
+        this.setState((prev) => ({ todos: [...prev.todos, ...arr], text: "" }));
         length = 0;
-        this.setState({ text: "" });
       }
     }
   };
@@ -102,7 +97,7 @@ class TodoList extends Component {
     return (
       <div className="bg-container">
         <div className="main-container">
-          <h4 className="heading">Day Goals</h4>
+          <h4 className="heading">Day Goals!</h4>
           <form
             onSubmit={isEdit ? this.onUpdateTodo : this.submitForm}
             className="form"
